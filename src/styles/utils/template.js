@@ -1,11 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { responsive } from '@/styles/utils/constants';
+import { responsive, color } from '@/styles/utils/constants';
+import background from '@/assets/img/bg.png';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 
   body {
+    background-color: ${color.secondary};
+
+    &:after {
+      content: '';
+      background-image: url(${background});
+      filter: blur(1px) grayscale(100%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: -1;
+      opacity: .05;
+    }
+
     * {
       font-family: 'Roboto', sans-serif;
       box-sizing: border-box;
@@ -24,8 +40,19 @@ export default createGlobalStyle`
     .container {
       margin-left: auto;
       margin-right: auto;
-      max-width: ${responsive.mobile.max};
       width: 90%;
+
+      @media (max-width: ${responsive.mobile.max}) {
+        max-width: ${responsive.mobile.max};
+      }
+
+      @media (min-width: ${responsive.desktop.min}) {
+        max-width: 900px;
+      }
+
+      @media (min-width: ${responsive.tablet.min}) and (max-width: ${responsive.tablet.max}) {
+        max-width: 900px;
+      }
     }
 
     .row, ul {
