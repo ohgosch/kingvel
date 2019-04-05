@@ -74,7 +74,7 @@ module.exports = (env) => {
     },
     plugins: [
       new CleanWebpackPlugin('./public', {
-        exclude: ['index.html'],
+        exclude: ['index.html', 'favicon.ico'],
       }),
       new webpack.DefinePlugin({
         'process.env': {

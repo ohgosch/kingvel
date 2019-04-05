@@ -6,7 +6,8 @@ import kingvel from '@/assets/img/kingvel.png';
 
 export const Header = () => (
   <Self>
-    <img src={kingvel} alt="Logotipo da Kingvel"/>
+    <Hidden>Kingvel</Hidden>
+    <img src={kingvel} alt="Logotipo da Kingvel" title="Kingvel" />
   </Self>
 );
 
@@ -18,6 +19,11 @@ const Self = styled.header`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+const Hidden = styled.h1`
+  position: absolute;
+  left: -9999pc;
 `;
 
 export default Header;

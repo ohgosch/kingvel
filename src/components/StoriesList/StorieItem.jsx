@@ -8,7 +8,7 @@ export const StorieItem = (props) => {
 
   return (
     <Self>
-      <SelfLink href="#">
+      <SelfLink href="#" title={`${title} of ${name}`}>
         <Title>{title}</Title>
         <Character>
           <Image src={`${thumbnail.path}.${thumbnail.extension}`} />
