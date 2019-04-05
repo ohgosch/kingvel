@@ -3,14 +3,16 @@ import styled from 'styled-components';
 
 import { color } from '@/styles/utils/constants';
 
-export const StorieItem = () => {
+export const StorieItem = (props) => {
+  const { title, character: { name, thumbnail } } = props;
+
   return (
     <Self>
       <SelfLink href="#">
-        <Title>Irredeemable Ant-Man (2006) #1</Title>
+        <Title>{title}</Title>
         <Character>
-          <Image src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg" />
-          <CharacterTitle>Ant-Man (Eric O'Grady)</CharacterTitle>
+          <Image src={`${thumbnail.path}.${thumbnail.extension}`} />
+          <CharacterTitle>{name}</CharacterTitle>
         </Character>
       </SelfLink>
     </Self>

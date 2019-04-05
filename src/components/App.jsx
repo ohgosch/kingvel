@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '@/logics/utils/axios-setup';
 import StyleTemplate from '@/styles/utils/template';
 import { Header } from '@/components/skeleton/Header';
 import { Home } from '@/components/pages/Home';
