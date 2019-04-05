@@ -1,4 +1,4 @@
-# Kinghost Marvel
+# Kingvel
 A simple application for list Marvel stories. Preview: [https://kingvel.netlify.com/](https://kingvel.netlify.com/).
 
 ## Development dependencies
