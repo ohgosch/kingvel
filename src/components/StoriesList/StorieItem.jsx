@@ -7,7 +7,7 @@ export const StorieItem = (props) => {
   const { title, character: { name, thumbnail } } = props;
 
   return (
-    <Self>
+    <article>
       <SelfLink href="#" title={`${title} of ${name}`}>
         <Title>{title}</Title>
         <Character>
@@ -15,14 +15,11 @@ export const StorieItem = (props) => {
           <CharacterTitle>{name}</CharacterTitle>
         </Character>
       </SelfLink>
-    </Self>
+    </article>
   );
 };
 
 const marginDefault = '15px';
-
-const Self = styled.article`
-`;
 
 const SelfLink = styled.a`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);

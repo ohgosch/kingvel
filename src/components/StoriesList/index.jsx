@@ -6,6 +6,7 @@ import { responsive } from '@/styles/utils/constants';
 import { character } from '@/logics/requests/character';
 import { stories } from '@/logics/requests/stories';
 
+// My favorite heroes id
 const charactersMap = [1009610, 1010802, 1010338];
 
 export class StoriesList extends React.Component {
@@ -20,16 +21,11 @@ export class StoriesList extends React.Component {
 
   componentDidMount() {
     this.setupCharacters();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { characters: prevCharacters } = prevState;
-    const { characters } = this.state;
-
-    if (prevCharacters.length !== characters.length) this.setupStories();
+    this.setupStories();
   }
 
   setupCharacters() {
+    // Find updated informations of the heroes
     Promise.all(charactersMap.map(item => character(item)))
       .then(data => {
         this.setState(state => ({
@@ -42,11 +38,17 @@ export class StoriesList extends React.Component {
   setupStories() {
     const { characters } = this.state;
 
+    // Find the stories of the heroes
     Promise.all(charactersMap.map((item) => stories(item)))
       .then(data => {
         const contacted = [];
         data.forEach((storieList, index) => {
-          return contacted.push(...storieList.map(storie => ({...storie, master: characters[index].id})));
+          return contacted.push(
+            ...storieList.map(storie => ({
+              ...storie,
+              master: charactersMap[index]
+            }))
+          );
         });
 
         this.setState(state => ({
@@ -57,6 +59,7 @@ export class StoriesList extends React.Component {
   }
 
   getCharacter({ master }) {
+    // Find the master character informations
     const { characters } = this.state;
 
     const { name, thumbnail } = characters.find(character => character.id === master);
