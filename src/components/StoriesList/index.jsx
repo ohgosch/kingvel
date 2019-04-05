@@ -90,7 +90,7 @@ export class StoriesList extends React.Component {
 const Self = styled.div`
   gap: 20px;
   display: grid;
-  margin-top: 25px;
+  padding: 25px 0;
 
   /* Desktop */
   @media (min-width: ${responsive.desktop.min}) {
