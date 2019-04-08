@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { color } from '@/styles/utils/constants';
 
+const pathFix = path => path.replace(/http:\/\//, '//');
+
 export const StorieItem = (props) => {
   const { title, character: { name, thumbnail } } = props;
 
@@ -11,7 +13,7 @@ export const StorieItem = (props) => {
       <SelfLink href="#" title={`${title} of ${name}`}>
         <Title>{title}</Title>
         <Character>
-          <Image src={`${thumbnail.path}.${thumbnail.extension}`} />
+          <Image src={`${pathFix(thumbnail.path)}.${thumbnail.extension}`} />
           <CharacterTitle>{name}</CharacterTitle>
         </Character>
       </SelfLink>
