@@ -16,6 +16,7 @@ export class StoriesList extends React.Component {
     this.state = {
       characters: [],
       stories: [],
+      ready: false,
     };
   }
 
@@ -30,7 +31,8 @@ export class StoriesList extends React.Component {
       .then(data => {
         this.setState(state => ({
           ...state,
-          characters: data
+          characters: data,
+          ready: true,
         }))
       });
   }
@@ -71,11 +73,12 @@ export class StoriesList extends React.Component {
   }
 
   render() {
-    const { stories } = this.state;
+    const { stories, ready } = this.state;
 
     return (
       <Self className="container">
-        {stories.map(storie => (
+        {/* Load only when the first request is done */}
+        {ready && stories.map(storie => (
           <StorieItem
             key={storie.id}
             title={storie.title}
